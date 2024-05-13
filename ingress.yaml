@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jackett
+  namespace: jackett
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: mary-jackett.io
+    http:
+      paths:
+      - backend:
+          service:
+            name: jackett-svc
+            port:
+              number: 9117
+        path: /
+        pathType: Prefix
